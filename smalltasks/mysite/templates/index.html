@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+{% extends 'header.html' %}
+{% block content %}
+<body>
+<a href="{% url 'new' %}">Link to the first (new) page</a>
+<br>
+<br>
+<a href="{% url 'final' %}">Link to the second (final) page</a>
+<br>
+<br>
+<a href="{% url 'verynew' %}">Link to the verynew page</a>
+</body>
+{% endblock %}
+</html>
