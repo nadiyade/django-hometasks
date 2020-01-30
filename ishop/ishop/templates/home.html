@@ -1,0 +1,10 @@
+<title>Homepage</title>
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Интернет-магазин</h3>
+<a href ="{% url 'see' %}">Просмотр товаров</a>
+{% if user.is_superuser %}
+<a href ="{% url 'create' %}">Добавление товара</a>
+{% endif %}
+{% endblock %}

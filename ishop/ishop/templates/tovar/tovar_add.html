@@ -1,0 +1,17 @@
+<title>Добавление товара</title>
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Добавление товара</h3>
+<form method="post" action="{% url 'create' %}">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Создать товар">
+</form>
+{% include 'tovar/tovar_list.html' %}
+<div>
+    {% for tovar in object_list %}
+    {{tovar.id}}{{tovar.name}}{{tovar.description}}{{tovar.price}}{{tovar.mumber}}<br>
+    {% endfor %}
+</div>
+{% endblock %}

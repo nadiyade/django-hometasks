@@ -1,0 +1,8 @@
+<!--{% block content %}-->
+<h3>Просмотр товаров</h3>
+<div>
+    {% for tovar in object_list %}
+    {{tovar.id}}{{tovar.name}}{{tovar.description}}{{tovar.price}}{{tovar.mumber}}<br>
+    {% endfor %}
+</div>
+<!--{% endblock %}-->

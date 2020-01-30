@@ -1,0 +1,22 @@
+<title>Просмотр товаров</title>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Просмотр товаров</h3>
+{% for tovar in object_list %}
+<div>Код {{tovar.pk}}. Название товара "{{tovar.name}}". {{tovar.description}} Цена {{tovar.price}} Доступно {{tovar.number}}
+
+    {% if user.is_authenticated %}
+<form method="post" action="{% url 'buy' %}">
+    {% csrf_token %}
+    {{ form.article_number}}
+    <input type="submit" value="Купить">
+</form>
+        {% if user.is_superuser %}
+        <a href="{% url 'update' tovar.pk %}" target="_blank">Обновить</a>
+        {% endif %}
+    {% endif %}
+</div>    <br>
+{% endfor %}
+{% endblock %}

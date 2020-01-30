@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+</head>
+<body>
+<header><a href="{% url 'home' %}">На главную</a><br>
+{% if user.is_authenticated %}
+    <p>Вы на сайте под именем "{{user.username}}", id "{{user.id}}", сумма в кошельке {{user.purse}} грн.</p>
+    <p>Пользователь зарегистрирован {{user.date_joined}} Последний вход {{user.last_login}}</p>
+    <p>Дата рождения пользователя {{user.birthday}}</p>
+    <a href="{% url 'logout' %}">Выйти из учётной записи</a>
+{% else %}
+    <a href="{% url 'login' %}">Войти (для зарегистрированных пользователей)</a> / <a href="{% url 'register' %}">Зарегистрироваться</a>
+{% endif %}
+</header>
+  {% block content %}
+  {% endblock %}
+
+{% block pagination %}
+  {% if is_paginated %}
+      <div class="pagination">
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="page-current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+              {% endif %}
+          </span>
+      </div>
+  {% endif %}
+{% endblock %}
+</body>
+</html>

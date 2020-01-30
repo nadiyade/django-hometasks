@@ -1,0 +1,12 @@
+<title>Покупка товара</title>
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Добавление товара</h3>
+
+<form method="post" action="">
+    {% csrf_token %}
+    <p>Введите количество</p>{{ form.article_number}}
+    <input type="submit" value="В корзину">
+</form>
+{% endblock %}

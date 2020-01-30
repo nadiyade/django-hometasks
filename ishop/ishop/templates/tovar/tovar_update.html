@@ -1,0 +1,12 @@
+<title>Изменение товара</title>
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Изменение товара</h3>
+<!--<form method="post">-->
+<form method="post" action="{% url 'update' pk=tovar.pk %}" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Обновить">
+</form>
+{% endblock %}
